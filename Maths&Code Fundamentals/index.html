@@ -16,26 +16,42 @@
       myCanvas.width = window.innerWidth;
       myCanvas.height = window.innerHeight;
 
+      const A = { x: 100, y: 300 };
+      const B = { x: 400, y: 100 };
+
       const ctx = myCanvas.getContext("2d");
 
-      const A = { x: 100, y: 200 };
-      const B = { x: 400, y: 200 };
+      animate();
 
-      const n = 10;
-      for (let i = 0; i <= n - 1; i++) {
-        function lerp(a, b, t) {
-          return a + (b - a) * t;
-        }
-        const t = i / (n - 1);
-        const C = {
-          x: lerp(A.x, B.x, t),
-          y: 200,
-        };
-        drawDot(C, "C");
+      function animate() {
+        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+
+        const sec = new Date().getTime() / 1000;
+        console.log(sec);
+        const t = sec - Math.floor(sec);
+
+        const C = vLerp(A, B, t);
+        drawDot(C, "");
+
+        requestAnimationFrame(animate);
       }
 
       drawDot(A, "A");
       drawDot(B, "B");
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      // This is a new helper function for "vector linear interpolation". Instead of interpolating the x and y coordinates separately, this
+      // function handles both at once.
+      function vLerp(A, B, t) {
+        return {
+          x: lerp(A.x, B.x, t),
+          y: lerp(A.y, B.y, t),
+        };
+      }
+
       // draw a labbeled dot at the given position on the canvas
       function drawDot(pos, label) {
         ctx.beginPath();

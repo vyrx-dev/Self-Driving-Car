@@ -21,32 +21,33 @@
       const A = { x: 100, y: 200 };
       const B = { x: 400, y: 200 };
 
+      const n = 10;
+      for (let i = 0; i <= n - 1; i++) {
+        function lerp(a, b, t) {
+          return a + (b - a) * t;
+        }
+        const t = i / (n - 1);
+        const C = {
+          x: lerp(A.x, B.x, t),
+          y: 200,
+        };
+        drawDot(C, "C");
+      }
+
       drawDot(A, "A");
       drawDot(B, "B");
-
-      const C = {
-        x: A.x + (B.x - A.x) * Math.random(),
-        y: 200,
-      };
-      drawDot(C, "C");
-
-      const D = {
-        x: A.x + (B.x - A.x) * Math.random(),
-        y: 200,
-      };
-      drawDot(D, "D");
-
+      // draw a labbeled dot at the given position on the canvas
       function drawDot(pos, label) {
         ctx.beginPath();
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "red";
         ctx.strokeStyle = "black";
-        ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2);
+        ctx.arc(pos.x, pos.y, 14, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.font = "bold 20px Arial";
+        ctx.font = "bold 12px Arial";
         ctx.fillText(label, pos.x, pos.y);
       }
     </script>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Line Interpolation</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+      myCanvas.width = window.innerWidth;
+      myCanvas.height = window.innerHeight;
+
+      const ctx = myCanvas.getContext("2d");
+
+      const A = { x: 100, y: 200 };
+      const B = { x: 400, y: 200 };
+
+      drawDot(A, "A");
+      drawDot(B, "B");
+
+      const C = {
+        x: A.x + (B.x - A.x) * Math.random(),
+        y: 200,
+      };
+      drawDot(C, "C");
+
+      const D = {
+        x: A.x + (B.x - A.x) * Math.random(),
+        y: 200,
+      };
+      drawDot(D, "D");
+
+      function drawDot(pos, label) {
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "black";
+        ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(label, pos.x, pos.y);
+      }
+    </script>
+  </body>
+</html>

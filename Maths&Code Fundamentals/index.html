@@ -19,25 +19,29 @@
       const A = { x: 100, y: 300 };
       const B = { x: 400, y: 100 };
 
+      const orange = { r: 230, g: 150, b: 0 };
+      const blue = { r: 0, g: 70, b: 160 };
+
       const ctx = myCanvas.getContext("2d");
 
       animate();
 
       function animate() {
-        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        // ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 
         const sec = new Date().getTime() / 1000;
-        console.log(sec);
-        const t = sec - Math.floor(sec);
+        const t = (Math.sin(sec * Math.PI) + 1) / 2;
 
         const C = vLerp(A, B, t);
         drawDot(C, "");
 
+        drawDot(A, "A");
+        drawDot(B, "B");
+
+        const { r, g, b } = orange;
+        myCanvas.style.backgroundColor = `rgb(${r},${g},${b})`;
         requestAnimationFrame(animate);
       }
-
-      drawDot(A, "A");
-      drawDot(B, "B");
 
       function lerp(a, b, t) {
         return a + (b - a) * t;

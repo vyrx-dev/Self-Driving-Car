@@ -27,7 +27,7 @@
       animate();
 
       function animate() {
-        // ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+        ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 
         const sec = new Date().getTime() / 1000;
         const t = (Math.sin(sec * Math.PI) + 1) / 2;
@@ -38,22 +38,21 @@
         drawDot(A, "A");
         drawDot(B, "B");
 
-        const { r, g, b } = orange;
+        const { r, g, b } = vLerp(orange, blue, t);
         myCanvas.style.backgroundColor = `rgb(${r},${g},${b})`;
         requestAnimationFrame(animate);
       }
 
-      function lerp(a, b, t) {
-        return a + (b - a) * t;
+      function vLerp(A, B, t) {
+        const res = {};
+        for (let attr in A) {
+          res[attr] = lerp(A[attr], B[attr], t);
+        }
+        return res;
       }
 
-      // This is a new helper function for "vector linear interpolation". Instead of interpolating the x and y coordinates separately, this
-      // function handles both at once.
-      function vLerp(A, B, t) {
-        return {
-          x: lerp(A.x, B.x, t),
-          y: lerp(A.y, B.y, t),
-        };
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
       }
 
       // draw a labbeled dot at the given position on the canvas

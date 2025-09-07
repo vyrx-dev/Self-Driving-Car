@@ -31,15 +31,15 @@
       let audioCtx = null;
       myCanvas.onclick = function () {
         if (audioCtx == null) {
-          audioCtx = new (AudioContext ||
-            webkitAudioContext ||
+          audioCtx = new (AudioContext || //think of this as a virtual sound mixing in your browser
+            webkitAudioContext || //this is used for compatibility with older browsers
             window.webkitAudioContext)();
           osc = audioCtx.createOscillator();
           osc.frequency.value = 200;
           osc.start();
 
-          const node = audioCtx.createGain();
-          node.gain.value = 0.1;
+          const node = audioCtx.createGain(); //volume knob in the circuit
+          node.gain.value = 0.1; //set the volume
 
           osc.connect(node);
           node.connect(audioCtx.destination);
@@ -67,6 +67,16 @@
         if (osc) {
           osc.frequency.value = lerp(lowFreq, highFreq, t);
         }
+
+        ctx.strokeStyle = "white";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.font = "bold 40px Arial";
+        ctx.setLineDash([lerp(50, 100, t), 100]);
+        ctx.strokeText("Click for sound", myCanvas.width / 2, 10);
+        ctx.setLineDash([]);
+        // ctx.fillText("rgba(255,255,255,0.2");  //optional
+        ctx.fillText("Click for sound", myCanvas.width / 2, 10);
       }
 
       function vLerp(A, B, t) {

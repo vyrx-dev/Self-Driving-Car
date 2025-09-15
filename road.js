@@ -35,6 +35,7 @@ class Road {
       ctx.moveTo(x, this.top);
       ctx.lineTo(x, this.bottom);
       ctx.stroke();
+      ctx.stroke();
     }
   }
 }

@@ -15,7 +15,7 @@ class Car {
   }
 
   update() {
-    this.#move;
+    this.#move();
   }
   #move() {
     if (this.controls.forward) {

@@ -7,7 +7,7 @@ const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width / 2, canvas.width * 0.9);
 // Create a new Car object
 // Places it in the 2nd lane (index 1) and 100 pixels from the top
-const car = new Car(road.getLaneCenter(1), 100, 30, 50);
+const car = new Car(road.getLaneCenter(2), 100, 30, 50);
 
 // Start the animation loop
 animate();

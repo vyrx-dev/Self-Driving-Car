@@ -13,6 +13,10 @@ class Car {
     this.friction = 0.05; // Force that slows the car down
     this.angle = 0; // The car's current angle (0 is facing up)
 
+    //load car image
+    this.img = new Image();
+    this.img.src = "images/car.png";
+
     // Create a new Controls object to handle keyboard input for this car
     this.controls = new Controls();
   }
@@ -89,11 +93,19 @@ class Car {
 
     // Draw the car as a rectangle
     // The rectangle is drawn centered at the new (0,0) coordinates
-    ctx.beginPath();
-    ctx.rect(-this.width / 2, -this.height / 2, this.width, this.height);
-    ctx.fillStyle = ("yellow");
-    ctx.fill();
+    // ctx.beginPath();
+    // ctx.rect(-this.width / 2, -this.height / 2, this.width, this.height);
+    // ctx.fillStyle = ("yellow");
+    // ctx.fill();
 
+    //Draw the image instead of rectangle
+    ctx.drawImage(
+      this.img,
+      -this.width / 2
+      , -this.height / 2,
+      this.width,
+      this.height
+    );
     // Restore the canvas to its original state (before translate/rotate)
     ctx.restore();
   }

@@ -1,5 +1,5 @@
 class Road {
-  constructor(x, width, laneCount = 3) {
+  constructor(x, width, laneCount = 5) {
     this.x = x; // The center x-coordinate of the road
     this.width = width; // The total width of the road
     this.laneCount = laneCount; // Number of lanes

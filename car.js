@@ -3,8 +3,8 @@ class Car {
     // --- Car's Physical Properties ---
     this.x = x; // Initial x-position (horizontal)
     this.y = y; // Initial y-position (vertical)
-    this.width = width; // Width of the car
-    this.height = height; // Height of the car
+    this.width = width; 
+    this.height = height; 
 
     // --- Movement Dynamics ---
     this.speed = 0; // Current speed
@@ -16,18 +16,18 @@ class Car {
     //load car image
     this.img = new Image();
     this.img.src = "images/car.png";
-
-    // Create a new Controls object to handle keyboard input for this car
+    
+    this.sensor=new Sensor(this);
     this.controls = new Controls();
+
+    
   }
 
-  // Main update method, called in every frame of the animation
   update() {
-    // Call the private #move method to handle all movement logic
     this.#move();
+    this.sensor.update();
   }
 
-  // Private method to encapsulate all movement calculations
   #move() {
     // --- Acceleration and Reversing ---
     if (this.controls.forward) {
@@ -108,5 +108,6 @@ class Car {
     );
     // Restore the canvas to its original state (before translate/rotate)
     ctx.restore();
+    this.sensor.draw(ctx);
   }
 }

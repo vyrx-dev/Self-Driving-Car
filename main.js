@@ -15,7 +15,7 @@ animate();
 // The main animation loop function
 function animate() {
   // Update the car's position and angle
-  car.update();
+  car.update(road.borders);
 
   // Resize canvas to fill the window height (also clears the canvas)
   canvas.height = window.innerHeight;

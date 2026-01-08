@@ -31,7 +31,7 @@ class Road {
 
   draw(ctx) {
     ctx.lineWidth = 5;
-    ctx.strokeStyle = "cyan";
+    ctx.strokeStyle = "#E8C099";
 
     // lane dividers
     for (let i = 1; i <= this.laneCount - 1; i++) {

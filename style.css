@@ -1,10 +1,13 @@
 body {
   margin: 0;
-  background: #1a1a1a;
+  background: #0d0509;
   overflow: hidden;
   text-align: center;
 }
 
-#myCanvas {
-  background: teal;
+#networkCanvas {
+  background: #0d0509;
+}
+#carCanvas {
+  background: #0d0509;
 }

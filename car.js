@@ -129,7 +129,7 @@ class Car {
     this.y -= Math.cos(this.angle) * this.speed;
   }
 
-  draw(ctx, color) {
+  draw(ctx, color, drawSensor = false) {
     if (this.damaged) {
       ctx.fillStyle = "#E85F6F";
     } else {
@@ -142,19 +142,7 @@ class Car {
     }
     ctx.fill();
 
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(-this.angle);
-    ctx.drawImage(
-      this.img,
-      -this.width / 2,
-      -this.height / 2,
-      this.width,
-      this.height,
-    );
-    ctx.restore();
-
-    if (this.sensor) {
+    if (this.sensor && drawSensor) {
       this.sensor.draw(ctx);
     }
   }

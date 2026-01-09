@@ -26,12 +26,12 @@ const traffic = [
   new Car(road.getLaneCenter(2), -300, 30, 50, "DUMMY", 2),
   new Car(road.getLaneCenter(0), -500, 30, 50, "DUMMY", 2),
   new Car(road.getLaneCenter(1), -500, 30, 50, "DUMMY", 2),
-  new Car(road.getLaneCenter(1), -900, 30, 50, "DUMMY", 2),
-  new Car(road.getLaneCenter(2), -700, 30, 50, "DUMMY", 2),
-  new Car(road.getLaneCenter(4), -300, 30, 50, "DUMMY", 2),
-  new Car(road.getLaneCenter(5), -500, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(2), -900, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(1), -200, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(5), -900, 30, 50, "DUMMY", 2),
   new Car(road.getLaneCenter(5), -700, 30, 50, "DUMMY", 2),
-  new Car(road.getLaneCenter(4), -200, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(4), -300, 30, 50, "DUMMY", 2),
+  new Car(road.getLaneCenter(4), -600, 30, 50, "DUMMY", 2),
 ];
 
 animate();
@@ -75,7 +75,7 @@ function animate(time) {
     cars[i].draw(carCtx, "#D9A56C");
   }
   carCtx.globalAlpha = 1;
-  bestCar.draw(carCtx, "#FF8A80", true);
+  bestCar.draw(carCtx, "blue", true);
 
   carCtx.restore();
   networkCtx.lineDashOffset = -time / 50;
